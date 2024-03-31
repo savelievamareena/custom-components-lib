@@ -1,8 +1,14 @@
 import React, { type FC } from "react";
 import { type ButtonProps } from "./Button.types";
+import "./Button.scss";
 
 const Button: FC<ButtonProps> = ({ children, ...props }) => {
-    return <button {...props}>{children}</button>;
+    const classes = ["my-button", `${props.size}`];
+    return (
+        <button className={classes.join(" ")} {...props}>
+            {children}
+        </button>
+    );
 };
 
 export default Button;
