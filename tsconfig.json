@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es5",
+    "jsx": "react",
+    "strictNullChecks": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "types": [],
+    "declaration": true
+  },
+  "exclude": [
+    "node_modules/*",
+    "dist",
+    "./src/stories"
+  ],
+  "include": [
+    "src/**/*",
+    "webpack.config.js",
+    ".eslintrc.js"
+  ]
+}
