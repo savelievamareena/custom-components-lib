@@ -1,5 +1,4 @@
 import * as path from "path";
-// const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
     mode: "production",
