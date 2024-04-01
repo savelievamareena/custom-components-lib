@@ -1,6 +1,5 @@
 import React, { type FC } from "react";
 import { type ButtonProps } from "./Button.types";
-// import "./Button.scss";
 
 const Button: FC<ButtonProps> = ({ children, ...props }) => {
     const classes = ["my-button", `${props.size}`];
