@@ -3,13 +3,13 @@ module.exports = {
         browser: true,
         es2021: true,
     },
-    extends: ["plugin:@typescript-eslint/recommended", "prettier"],
+    extends: ["plugin:@typescript-eslint/recommended", "prettier", "plugin:storybook/recommended"],
     overrides: [
         {
             env: {
                 node: true,
             },
-            files: ["webpack.config.js", ".eslintrc.js"],
+            files: ["webpack.config.ts", ".eslintrc.js", ".storybook/preview.ts"],
             parserOptions: {
                 sourceType: "script",
             },
