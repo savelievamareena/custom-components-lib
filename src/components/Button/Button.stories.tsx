@@ -1,6 +1,7 @@
 import { type StoryObj, type Meta } from "@storybook/react";
 import Button from "./Button";
 import { type ButtonProps } from "./Button.types";
+import "./Button.scss";
 
 export default {
     title: "Components/Button",
