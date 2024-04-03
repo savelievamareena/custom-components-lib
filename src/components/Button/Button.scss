@@ -1,4 +1,68 @@
-.large {
-    width: 200px;
-    font-size: 22px;
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
+
+$color-blue: #1565C0;
+$color-dark-grey: #A6A6A6;
+$color-light-grey: #E0E0E0;
+
+.my_button {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    border-radius: 4px;
+    cursor: pointer;
 }
+
+.large {
+    font-size: 18px;
+    padding: 8px 12px;
+}
+
+.medium {
+    font-size: 16px;
+    padding: 6px 10px;
+}
+
+.small {
+    font-size: 14px;
+    padding: 4px 8px;
+}
+
+.text {
+    background-color: white;
+    border: none;
+    color: #1565C0;
+}
+
+.text:disabled {
+    cursor: default;
+    color: $color-dark-grey;
+}
+
+.outlined {
+    background-color: white;
+    border: 1px solid $color-blue;
+    color: $color-blue;
+}
+
+.outlined:disabled {
+    cursor: default;
+    color: $color-dark-grey;
+    border-color: $color-dark-grey;
+}
+
+.outlined:focus {
+    outline: none;
+}
+
+.contained {
+    background-color: $color-blue;
+    color: white;
+    border: 1px solid $color-blue;
+}
+
+.contained:disabled {
+    cursor: default;
+    color: $color-dark-grey;
+    border: 1px solid $color-dark-grey;
+    background-color: $color-light-grey;
+}
+
