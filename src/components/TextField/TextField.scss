@@ -1,0 +1,144 @@
+$error-red: #de1111;
+
+html {
+    font-size: 16px;
+}
+
+.text_field_wrapper {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.45em;
+    letter-spacing: 0.01em;
+    box-sizing: border-box;
+    position: relative;
+    min-width: 222px;
+}
+
+.text_field_wrapper label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #9a9999;
+    transition: top 0.3s;
+    font-weight: 400;
+}
+
+.text_field_input, .text_field_input:focus {
+    border: none;
+    outline: none;
+    height: 1.4375em;
+    font-size: 1.1em;
+}
+
+
+//outlined
+.text_field_wrapper.outlined {
+    border: 1px solid #c4c2c2;
+    border-radius: 4px;
+    padding: 16px 14px;
+}
+
+.text_field_wrapper.outlined:hover {
+    border: 1px solid black;
+}
+
+.text_field_wrapper.outlined:focus-within {
+    border: 2px solid #2581DC;
+    padding: 15px 13px;
+}
+
+.text_field_wrapper.outlined:focus-within>label,
+.text_field_wrapper.outlined > label.focused {
+    top: -2px;
+    font-size: 0.8em;
+    background-color: white;
+    padding: 0 4px;
+}
+
+.text_field_wrapper.outlined:focus-within>label {
+    color: #2581DC;
+}
+
+
+//filled
+.text_field_wrapper.filled {
+    background-color: #E8E8E8;
+    border-bottom: 1px solid black;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    padding: 25px 12px 8px;
+}
+
+.text_field_wrapper.filled .text_field_input {
+    background-color: #E8E8E8;
+}
+
+.text_field_wrapper.filled:hover, .text_field_wrapper.filled:hover .text_field_input {
+    background-color: #e1e0e0;
+}
+
+.text_field_wrapper.filled:focus-within {
+    background-color: #E8E8E8;
+    border-bottom: 2px solid #2581DC;
+    padding-bottom: 7px;
+}
+
+.text_field_wrapper.filled:hover .text_field_input:focus {
+    background-color: #E8E8E8;
+}
+
+.text_field_wrapper.filled:focus-within>label,
+.text_field_wrapper.filled > label.focused {
+    top: 15px;
+    font-size: 0.8em;
+    padding: 4px;
+}
+
+.text_field_wrapper.filled:focus-within>label {
+    color: #2581DC;
+}
+
+
+//standard
+.text_field_wrapper.standard {
+    border-bottom: 1px solid black;
+    padding: 18px 0 6px;
+}
+
+.text_field_wrapper.standard:hover {
+    border-bottom: 2px solid black;
+    padding-bottom: 5px;
+}
+
+.text_field_wrapper.standard:focus-within {
+    border-bottom: 2px solid #2581DC;
+    padding-bottom: 5px;
+}
+
+.text_field_wrapper.standard>label {
+    left: 0;
+}
+
+.text_field_wrapper.standard:focus-within>label,
+.text_field_wrapper.standard > label.focused {
+    top: 6px;
+    font-size: 0.8em;
+    padding: 4px;
+}
+
+.text_field_wrapper.standard:focus-within>label {
+    color: #2581DC;
+}
+
+.text_field_wrapper.outlined.error,
+.text_field_wrapper.filled.error,
+.text_field_wrapper.standard.error {
+    border-color: $error-red;
+}
+
+.text_field_wrapper.error>label,
+.text_field_wrapper.error:focus-within>label {
+    color: $error-red;
+}
