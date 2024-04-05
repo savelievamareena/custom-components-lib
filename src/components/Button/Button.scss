@@ -1,4 +1,90 @@
-.large {
-    width: 200px;
-    font-size: 22px;
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
+
+$color-blue: #1976d2;
+$color-light-blue: #0A76D27F;
+$color-darker-grey: #A6A6A6;
+$color-light-grey: #E0E0E0;
+
+html {
+    font-size: 16px;
 }
+
+.my_button {
+    font-family: 'Roboto', "Helvetica", "Arial", sans-serif;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    line-height: 1.75;
+    letter-spacing: 0.02857em;
+    text-transform: uppercase;
+    margin: 8px;
+}
+
+.large {
+    font-size: 18px;
+    padding: 7px 21px;
+}
+
+.medium {
+    font-size: 16px;
+    padding: 5px 15px;
+}
+
+.small {
+    font-size: 14px;
+    padding: 3px 9px;
+}
+
+.text {
+    background-color: white;
+    border: none;
+    color: #1565C0;
+}
+
+.text:disabled {
+    cursor: default;
+    color: $color-darker-grey;
+}
+
+.text:hover {
+    cursor: default;
+    background-color: rgba(25, 118, 210, 0.04);;
+}
+
+.outlined {
+    background-color: white;
+    border: 1px solid $color-light-blue;
+    color: $color-blue;
+}
+
+.outlined:disabled {
+    cursor: default;
+    color: $color-darker-grey;
+    border-color: $color-darker-grey;
+}
+
+.outlined:hover {
+    background-color: #0A76D20A;
+    border: 1px solid $color-blue;
+}
+
+.contained {
+    background-color: $color-blue;
+    color: white;
+    border: 1px solid $color-blue;
+}
+
+.contained:disabled {
+    cursor: default;
+    color: $color-darker-grey;
+    border: 1px solid $color-darker-grey;
+    background-color: $color-light-grey;
+}
+
+.contained:hover {
+    text-decoration: none;
+    background-color: $color-blue;
+    box-shadow: 0 2px 4px -1px #00000033, 0 4px 5px 0px #00000023, 0 1px 10px 0px #0000001E;
+}
+
