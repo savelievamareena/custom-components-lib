@@ -14,7 +14,7 @@ export default {
 export const Primary: StoryObj<TextFieldProps> = {
     args: {
         disabled: false,
-        error: false,
+        error: true,
         variant: "outlined",
         label: "Name",
     },
