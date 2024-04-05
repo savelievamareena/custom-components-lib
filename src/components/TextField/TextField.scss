@@ -1,4 +1,7 @@
 $error-red: #de1111;
+$disabled-text: #D3D3D3FF;
+$disabled-text-dark: #a2a1a1;
+$disabled-bg: #d3d3d3;
 
 html {
     font-size: 16px;
@@ -8,11 +11,12 @@ html {
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     font-weight: 500;
     font-size: 1rem;
-    line-height: 1.45em;
-    letter-spacing: 0.01em;
+    line-height: 1.5em;
     box-sizing: border-box;
     position: relative;
     min-width: 222px;
+    display: inline-block;
+    margin: 8px;
 }
 
 .text_field_wrapper label {
@@ -25,11 +29,20 @@ html {
     font-weight: 400;
 }
 
-.text_field_input, .text_field_input:focus {
+.text_field_input,
+.text_field_input:focus {
     border: none;
     outline: none;
     height: 1.4375em;
     font-size: 1.1em;
+}
+
+.text_field_wrapper.disabled .text_field_input {
+    color: $disabled-text;
+}
+
+.text_field_wrapper.disabled label {
+    color: $disabled-text;
 }
 
 
@@ -42,6 +55,16 @@ html {
 
 .text_field_wrapper.outlined:hover {
     border: 1px solid black;
+}
+
+.text_field_wrapper.outlined.disabled {
+    border: 1px solid $disabled-text;
+    color: $disabled-text;
+    background-color: white;
+}
+
+.text_field_input:disabled {
+    background-color: white;
 }
 
 .text_field_wrapper.outlined:focus-within {
@@ -69,6 +92,21 @@ html {
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     padding: 25px 12px 8px;
+}
+
+.text_field_wrapper.filled.disabled {
+    border-bottom: 1px dotted black;
+    background-color: $disabled-bg;
+    padding-bottom: 8px;
+}
+
+.text_field_wrapper.filled.disabled .text_field_input {
+    background-color: $disabled-bg;
+    color: $disabled-text-dark;
+}
+
+.text_field_wrapper.filled.disabled label {
+    color: $disabled-text-dark;
 }
 
 .text_field_wrapper.filled .text_field_input {
@@ -105,6 +143,11 @@ html {
 .text_field_wrapper.standard {
     border-bottom: 1px solid black;
     padding: 18px 0 6px;
+}
+
+.text_field_wrapper.standard.disabled {
+    border-bottom: 1px dotted black;
+    padding-bottom: 6px;
 }
 
 .text_field_wrapper.standard:hover {

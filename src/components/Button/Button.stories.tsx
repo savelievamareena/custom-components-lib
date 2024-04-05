@@ -9,7 +9,7 @@ export default {
 
 export const Large: StoryObj<ButtonProps> = {
     args: {
-        variant: "text",
+        variant: "contained",
         size: "large",
         children: "LARGE",
     },
@@ -27,6 +27,6 @@ export const Small: StoryObj<ButtonProps> = {
     args: {
         size: "small",
         children: "SMALL",
-        variant: "outlined",
+        variant: "contained",
     },
 };

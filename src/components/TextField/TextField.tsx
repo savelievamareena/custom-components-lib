@@ -15,7 +15,12 @@ const TextField: FC<TextFieldProps> = ({ disabled, error, variant, label }) => {
         inputRef.current?.focus();
     };
 
-    const styles = classNames("text_field_wrapper", error ? "error" : "", variant);
+    const styles = classNames(
+        "text_field_wrapper",
+        error ? "error" : "",
+        variant,
+        disabled ? "disabled" : "",
+    );
 
     return (
         <div className={styles} onClick={handleOuterDivClick}>

@@ -21,68 +21,68 @@ html {
     margin: 8px;
 }
 
-.large {
+.my_button.large {
     font-size: 18px;
     padding: 7px 21px;
 }
 
-.medium {
+.my_button.medium {
     font-size: 16px;
     padding: 5px 15px;
 }
 
-.small {
+.my_button.small {
     font-size: 14px;
     padding: 3px 9px;
 }
 
-.text {
+.my_button.text {
     background-color: white;
     border: none;
     color: #1565C0;
 }
 
-.text:disabled {
+.my_button.text:disabled {
     cursor: default;
     color: $color-darker-grey;
 }
 
-.text:hover {
+.my_button.text:hover {
     cursor: default;
     background-color: rgba(25, 118, 210, 0.04);;
 }
 
-.outlined {
+.my_button.outlined {
     background-color: white;
     border: 1px solid $color-light-blue;
     color: $color-blue;
 }
 
-.outlined:disabled {
+.my_button.outlined:disabled {
     cursor: default;
     color: $color-darker-grey;
     border-color: $color-darker-grey;
 }
 
-.outlined:hover {
+.my_button.outlined:hover {
     background-color: #0A76D20A;
     border: 1px solid $color-blue;
 }
 
-.contained {
+.my_button.contained {
     background-color: $color-blue;
     color: white;
     border: 1px solid $color-blue;
 }
 
-.contained:disabled {
+.my_button.contained:disabled {
     cursor: default;
     color: $color-darker-grey;
     border: 1px solid $color-darker-grey;
     background-color: $color-light-grey;
 }
 
-.contained:hover {
+.my_button.contained:hover {
     text-decoration: none;
     background-color: $color-blue;
     box-shadow: 0 2px 4px -1px #00000033, 0 4px 5px 0px #00000023, 0 1px 10px 0px #0000001E;
