@@ -39,4 +39,4 @@ Props
 **error**: If true, the text field will show an error state.
 **label**: The label content.
 
-![TextField](https://raw.githubusercontent.com/savelievamareena/custom-components-lib/master/assets/img_1.png)
+![TextField](https://raw.githubusercontent.com/savelievamareena/custom-components-lib/master/assets/img_2.png)
