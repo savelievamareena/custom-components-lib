@@ -27,7 +27,7 @@ Props
 **onClick**: Function to execute on button click.
 **size**: The size of the button ("small" | "medium" | "large").
 
-![Buttons](https://raw.githubusercontent.com/savelievamareena/custom-components-lib/master/img_1.png)
+![Buttons](https://raw.githubusercontent.com/savelievamareena/custom-components-lib/master/assets/img_1.png)
 
 ### TextField:
 
@@ -39,4 +39,4 @@ Props
 **error**: If true, the text field will show an error state.
 **label**: The label content.
 
-![TextField](https://raw.githubusercontent.com/savelievamareena/custom-components-lib/master/img_2.png)
+![TextField](https://raw.githubusercontent.com/savelievamareena/custom-components-lib/master/assets/img_1.png)
