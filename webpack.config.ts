@@ -27,6 +27,13 @@ module.exports = {
                 use: ["ts-loader"],
                 exclude: /node_modules/,
             },
+            {
+                test: /\.(png|jpe?g|gif|svg)$/i,
+                type: "asset/resource",
+                generator: {
+                    filename: "images/[hash][ext][query]",
+                },
+            },
         ],
     },
     devServer: {

@@ -27,7 +27,7 @@ Props
 **onClick**: Function to execute on button click.
 **size**: The size of the button ("small" | "medium" | "large").
 
-![img_1.png](img_1.png)
+![Buttons](./assets/img_1.png)
 
 ### TextField:
 
@@ -39,5 +39,5 @@ Props
 **error**: If true, the text field will show an error state.
 **label**: The label content.
 
-![img_2.png](img_2.png)
+![TextField](./assets/img_2.png)
 
