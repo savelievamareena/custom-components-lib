@@ -3,7 +3,7 @@ import { type TextFieldProps } from "./TextField.types";
 import classNames from "classnames";
 import "./TextField.scss";
 
-const TextField: FC<TextFieldProps> = ({ disabled, error, variant, label }) => {
+const TextField: FC<TextFieldProps> = ({ disabled, error, variant = "standard", label }) => {
     const [inputValue, setInputValue] = useState("");
     const inputRef = useRef<HTMLInputElement>(null);
 

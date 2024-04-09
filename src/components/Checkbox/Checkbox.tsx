@@ -18,7 +18,7 @@ const Checkbox: FC<CheckboxProps> = ({ label, checked, disabled, onChange }) => 
                 onChange={onChange}
                 id={"my_checkbox"}
             />
-            <label>{label}</label>
+            <label className={disabled ? "disabled" : ""}>{label}</label>
         </div>
     );
 };
