@@ -61,6 +61,8 @@ TO the checkbox you can pass the following props:
 
 **label** The label content.
 
+![img.png](assets/img_3.png)
+
 
 ### Switch
 
@@ -71,3 +73,5 @@ TO the checkbox you can pass the following props:
 **obChange** Function to execute on switch change
 
 **disabled** If true, the switch will be disabled.
+
+![img.png](assets/img_4.png)
