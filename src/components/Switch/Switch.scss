@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
+
+$color-blue: #1976d2;
+$color-blue-faded: #A7CAED;
+$color-light-blue: #88B8E7;
+$color-light-blue-faded: #E3EEFA;
+$color-light-grey: #F5F5F5;
+$color-medium-grey: #E0E0E0;
+$color-darker-grey: #989898;
+
+.toggle_input {
+    visibility: hidden;
+}
+
+.switch {
+    width: 40px;
+    height: 14px;
+    background-color: $color-darker-grey;
+    border-radius: 15px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.switch.on {
+    background-color: $color-light-blue;
+}
+
+.switch.on .toggle {
+    transform: translateX(20px);
+    background-color: $color-blue;
+}
+
+.switch .toggle {
+    width: 22px;
+    height: 22px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: -4px;
+    left: -2px;
+    transition: transform 0.3s;
+    -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.5);
+    -moz-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.5);
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.5);
+}
+
+.switch.disabled {
+    background-color: $color-medium-grey;
+}
+
+.switch.disabled .toggle{
+    background-color: $color-light-grey;
+}
+
+.switch.disabled.on {
+    background-color: $color-light-blue-faded;
+}
+
+.switch.disabled.on .toggle{
+    background-color: $color-blue-faded;
+}
