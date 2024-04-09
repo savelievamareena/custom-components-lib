@@ -14,7 +14,7 @@ npm i svl-ui-lib
 ## Usage
 
 ```js
-import { Button, TextField, Checkbox } from 'svl-ui-lib';
+import { Button, TextField, Checkbox, Switch } from 'svl-ui-lib';
 ```
 
 ### Button:
