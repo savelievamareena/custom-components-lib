@@ -14,7 +14,7 @@ npm i svl-ui-lib
 ## Usage
 
 ```js
-import { Button, TextField, Checkbox } from 'svl-ui-lib';
+import { Button, TextField, Checkbox, Switch } from 'svl-ui-lib';
 ```
 
 ### Button:
@@ -61,7 +61,7 @@ TO the checkbox you can pass the following props:
 
 **label** The label content.
 
-![img.png](assets/img_3.png)
+![Checkbox](https://raw.githubusercontent.com/savelievamareena/custom-components-lib/master/assets/img_3.png)
 
 
 ### Switch
@@ -74,4 +74,4 @@ TO the checkbox you can pass the following props:
 
 **disabled** If true, the switch will be disabled.
 
-![img.png](assets/img_4.png)
+![Switch](https://raw.githubusercontent.com/savelievamareena/custom-components-lib/master/assets/img_4.png)
