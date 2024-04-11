@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
+
+$color-medium-grey: #E0E0E080;
+
+html {
+    font-size: 16px;
+}
+
+.modal_wrapper {
+    height: 100vh;
+    width: 100vw;
+    background-color: $color-medium-grey;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 9999;
+}
+
+.modal_wrapper .modal {
+    border: 2px solid black;
+    min-width: 200px;
+    text-align: center;
+    background-color: white;
+    margin: auto;
+    padding: 20px;
+}
+
+.modal_wrapper.opened {
+    opacity: 1;
+    pointer-events: auto;
+}
+
