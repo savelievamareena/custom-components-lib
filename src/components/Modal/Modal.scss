@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
 
-$color-medium-grey: #E0E0E080;
+$bg-color: #0000007F;
 
 html {
     font-size: 16px;
@@ -9,7 +9,7 @@ html {
 .modal_wrapper {
     height: 100vh;
     width: 100vw;
-    background-color: $color-medium-grey;
+    background-color: $bg-color;
     justify-content: center;
     align-content: center;
     display: flex;
