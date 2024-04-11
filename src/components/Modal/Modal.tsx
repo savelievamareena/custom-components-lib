@@ -34,7 +34,7 @@ const Modal: FC<ModalProps> = ({ open, children, onClose }) => {
     return (
         <div>
             {createPortal(
-                <div className={styles} onClick={handleOutsideClick}>
+                <div className={styles} onClick={handleOutsideClick} role={"dialog"}>
                     <div className='modal' onClick={stopPropagation}>
                         {children}
                     </div>
