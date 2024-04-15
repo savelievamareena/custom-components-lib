@@ -7,6 +7,9 @@ html {
 }
 
 .options_wrapper {
+    min-width: 200px;
+    max-height: 200px;
+    background-color: white;
     margin: 8px;
     border: 1px solid $disabled-text;
     border-radius: 4px;
@@ -14,10 +17,14 @@ html {
     box-shadow: rgba(0, 0, 0, 0.2) 0 5px 5px -3px, rgba(0, 0, 0, 0.14) 0 8px 10px 1px, rgba(0, 0, 0, 0.12) 0 3px 14px 2px;
     color: rgba(0, 0, 0, 0.87);
     display: none;
+
+    &.visible {
+        display: inline-block;
+    }
 }
 
 .option {
-    padding: 8px;
+    padding: 10px;
     border-bottom: 1px solid $disabled-text;
     list-style-type: none;
 
