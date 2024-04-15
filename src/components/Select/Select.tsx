@@ -35,25 +35,46 @@ const Select = ({ label, options }: SelectProps) => {
 
     const handleOptionClick = (event: React.MouseEvent) => {
         event.stopPropagation();
-        console.log(event.currentTarget.textContent);
         if (event.currentTarget.textContent) {
             setSelectedOption(event.currentTarget.textContent);
             setIsOptionsVisible(false);
-            if (toggleRef.current) {
-                toggleRef.current.focus();
-            }
         }
     };
 
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
-            if (isOptionsVisible && event.key === "Escape") {
-                setIsOptionsVisible(false);
+            if (isOptionsVisible) {
+                if (event.key === "Escape") {
+                    setIsOptionsVisible(false);
+                }
+            } else {
+                if (event.key === "Enter") {
+                    setIsOptionsVisible(true);
+
+                    if (toggleRef.current && optionsRef.current) {
+                        const selectElement = toggleRef.current.getBoundingClientRect();
+                        setLeft(selectElement.left + "px");
+
+                        if (selectElement.bottom > 200) {
+                            const topCalculated = selectElement.top + selectElement.height;
+                            setTop(topCalculated + "px");
+                        } else {
+                            const bottomCalculated = selectElement.top + selectElement.height;
+                            setBottom(bottomCalculated + "px");
+                        }
+                    }
+                }
             }
         };
 
         document.addEventListener("keydown", handleKeyDown);
 
+        return () => {
+            document.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [isOptionsVisible]);
+
+    useEffect(() => {
         const handleOutsideClick = (event: MouseEvent) => {
             if (
                 isOptionsVisible &&
@@ -71,7 +92,6 @@ const Select = ({ label, options }: SelectProps) => {
         }
 
         return () => {
-            document.removeEventListener("keydown", handleKeyDown);
             document.removeEventListener("click", handleOutsideClick);
         };
     }, [isOptionsVisible]);

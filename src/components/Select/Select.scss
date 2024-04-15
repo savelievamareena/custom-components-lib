@@ -27,8 +27,13 @@ html {
     padding: 10px;
     border-bottom: 1px solid $disabled-text;
     list-style-type: none;
+    cursor: pointer;
 
     &:last-child {
         border-bottom: none;
+    }
+
+    &:hover {
+        background-color: $disabled-text;
     }
 }
