@@ -1,9 +1,6 @@
-import React from "react";
+import { ComponentProps } from "react";
 
-export interface ButtonProps {
-    children: React.ReactNode;
+export interface ButtonProps extends ComponentProps<"button"> {
     variant: "text" | "contained" | "outlined";
-    disabled: boolean;
-    onClick: () => void;
     size: "small" | "medium" | "large";
 }

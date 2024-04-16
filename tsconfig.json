@@ -22,6 +22,7 @@
   "include": [
     "src/**/*",
     "webpack.config.ts",
-    ".eslintrc.js"
+    ".eslintrc.js",
+    "declarations.d.ts"
   ]
 }

@@ -5,6 +5,10 @@ import { type ButtonProps } from "./Button.types";
 export default {
     title: "Components/Button",
     component: Button,
+    parameters: {
+        layout: "centered",
+    },
+    tags: ["autodocs"],
 } as Meta;
 
 export const Large: StoryObj<ButtonProps> = {
@@ -12,6 +16,7 @@ export const Large: StoryObj<ButtonProps> = {
         variant: "contained",
         size: "large",
         children: "LARGE",
+        disabled: true,
     },
 };
 

@@ -1,6 +1,5 @@
-export interface CheckboxProps {
-    checked: boolean;
+import { ComponentProps } from "react";
+
+export interface CheckboxProps extends ComponentProps<"input"> {
     label: string;
-    disabled: boolean;
-    onChange: () => void;
 }

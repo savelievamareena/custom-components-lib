@@ -1,24 +1,22 @@
-import React, { type FC, useState } from "react";
+import React, { useState } from "react";
 import { type CheckboxProps } from "./Checkbox.types";
-import "./Checkbox.scss";
+import styles from "./Checkbox.module.scss";
 
-const Checkbox: FC<CheckboxProps> = ({ label, checked, disabled, onChange }) => {
-    const [isChecked, setIsChecked] = useState(checked);
+const Checkbox = ({ label, ...props }: CheckboxProps) => {
+    const [isChecked, setIsChecked] = useState(props.checked);
 
     function handleClick() {
         setIsChecked(!isChecked);
     }
 
     return (
-        <div className='checkbox_wrapper' onClick={disabled ? undefined : handleClick}>
-            <input
-                type='checkbox'
-                checked={isChecked}
-                disabled={disabled}
-                onChange={onChange}
-                id={"my_checkbox"}
-            />
-            <label className={disabled ? "disabled" : ""}>{label}</label>
+        <div
+            className={styles.checkbox_wrapper}
+            onClick={props.disabled ? undefined : handleClick}
+            {...props}
+        >
+            <input type='checkbox' checked={isChecked} id={"my_checkbox"} />
+            <label className={props.disabled ? styles.disabled : ""}>{label}</label>
         </div>
     );
 };
