@@ -1,11 +1,22 @@
-import React, { type FC, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { type TextFieldProps } from "./TextField.types";
 import classNames from "classnames";
 import "./TextField.scss";
 
-const TextField: FC<TextFieldProps> = ({ disabled, error, variant = "standard", label }) => {
-    const [inputValue, setInputValue] = useState("");
+const TextField = ({
+    value = "",
+    disabled,
+    error,
+    variant = "standard",
+    label,
+    readonly,
+}: TextFieldProps) => {
+    const [inputValue, setInputValue] = useState(value);
     const inputRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        setInputValue(value);
+    }, [value]);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(event.target.value);
@@ -31,10 +42,12 @@ const TextField: FC<TextFieldProps> = ({ disabled, error, variant = "standard", 
             </label>
             <input
                 ref={inputRef}
+                value={inputValue}
                 className='text_field_input'
                 type='text'
                 disabled={disabled}
                 onChange={handleInputChange}
+                readOnly={readonly}
             />
         </div>
     );
