@@ -1,12 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
-
-$color-blue: #1976d2;
-$color-blue-faded: #A7CAED;
-$color-light-blue: #88B8E7;
-$color-light-blue-faded: #E3EEFA;
-$color-light-grey: #F5F5F5;
-$color-medium-grey: #E0E0E0;
-$color-darker-grey: #989898;
+@import '../../../styles/base.module';
 
 .toggle_input {
     visibility: hidden;

@@ -1,5 +1,3 @@
-export interface SwitchProps {
-    checked: boolean;
-    onChange: () => void;
-    disabled: boolean;
-}
+import { ComponentProps } from "react";
+
+export interface SwitchProps extends ComponentProps<"input"> {}

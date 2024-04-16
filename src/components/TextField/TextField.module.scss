@@ -1,13 +1,4 @@
-$error-red: #de1111;
-$disabled-text: #D3D3D3FF;
-$disabled-bg: #d3d3d3;
-$text-dark: #a2a1a1;
-$grey-filled: #E8E8E8;
-$blue: #2581DC;
-
-html {
-    font-size: 16px;
-}
+@import '../../../styles/base.module';
 
 .text_field_wrapper {
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;

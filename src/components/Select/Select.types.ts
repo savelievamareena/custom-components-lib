@@ -1,4 +1,6 @@
-export interface SelectProps {
+import { ComponentProps } from "react";
+
+export interface SelectProps extends ComponentProps<"div"> {
     label: string;
     options: Options[];
 }

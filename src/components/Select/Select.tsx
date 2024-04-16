@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState, CSSProperties } from "react";
-import { type SelectProps } from "./Select.types";
-import "./Select.scss";
-import TextField from "../TextField";
 import { createPortal } from "react-dom";
+import classNames from "classnames";
+import { TextField } from "../TextField";
+import { type SelectProps } from "./Select.types";
+import styles from "./Select.module.scss";
 
-const Select = ({ label, options }: SelectProps) => {
+const Select = ({ label, options, ...props }: SelectProps) => {
     const [isOptionsVisible, setIsOptionsVisible] = useState(false);
     const [selectedOption, setSelectedOption] = useState("");
 
@@ -103,30 +104,26 @@ const Select = ({ label, options }: SelectProps) => {
         positionCalculated.top = top;
     }
 
+    const classes = classNames(styles.options_wrapper, isOptionsVisible ? styles.visible : "");
+
     return (
         <div>
-            <div onClick={handleClick} ref={toggleRef}>
+            <div onClick={handleClick} ref={toggleRef} {...props}>
                 <TextField
                     value={selectedOption}
-                    disabled={false}
                     error={false}
                     label={label}
                     variant={"outlined"}
-                    readonly={true}
+                    readOnly={true}
                 />
             </div>
 
             {createPortal(
-                <div
-                    className={`options_wrapper ${isOptionsVisible ? "visible" : ""}`}
-                    role={"menu"}
-                    ref={optionsRef}
-                    style={positionCalculated}
-                >
+                <div className={classes} role={"menu"} ref={optionsRef} style={positionCalculated}>
                     {options.map((option, i) => {
                         return (
                             <div
-                                className={"option"}
+                                className={styles.option}
                                 data-value={option.id}
                                 role={"option"}
                                 key={i}

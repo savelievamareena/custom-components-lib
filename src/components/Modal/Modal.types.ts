@@ -1,7 +1,6 @@
-import React from "react";
+import { ComponentProps } from "react";
 
-export interface ModalProps {
+export interface ModalProps extends ComponentProps<"div"> {
     open: boolean;
-    children: React.ReactNode;
     onClose: () => void;
 }

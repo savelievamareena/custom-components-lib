@@ -10,12 +10,8 @@ const Checkbox = ({ label, ...props }: CheckboxProps) => {
     }
 
     return (
-        <div
-            className={styles.checkbox_wrapper}
-            onClick={props.disabled ? undefined : handleClick}
-            {...props}
-        >
-            <input type='checkbox' checked={isChecked} id={"my_checkbox"} />
+        <div className={styles.checkbox_wrapper} onClick={props.disabled ? undefined : handleClick}>
+            <input type='checkbox' checked={isChecked} id={"my_checkbox"} {...props} />
             <label className={props.disabled ? styles.disabled : ""}>{label}</label>
         </div>
     );

@@ -1,8 +1,8 @@
-export interface TextFieldProps {
+import { ComponentProps } from "react";
+
+export interface TextFieldProps extends ComponentProps<"input"> {
     value: string;
-    disabled: boolean;
     error: boolean;
     label: string;
     variant: "outlined" | "filled" | "standard";
-    readonly: boolean;
 }
