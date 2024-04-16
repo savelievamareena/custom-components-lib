@@ -67,10 +67,14 @@ const Select = ({ label, options }: SelectProps) => {
             }
         };
 
-        document.addEventListener("keydown", handleKeyDown);
+        if (toggleRef.current) {
+            toggleRef.current.addEventListener("keydown", handleKeyDown);
+        }
 
         return () => {
-            document.removeEventListener("keydown", handleKeyDown);
+            if (toggleRef.current) {
+                toggleRef.current.removeEventListener("keydown", handleKeyDown);
+            }
         };
     }, [isOptionsVisible]);
 
