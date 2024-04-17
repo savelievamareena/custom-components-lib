@@ -30,4 +30,8 @@
     &:hover {
         background-color: $disabled-text;
     }
+
+    &.selected {
+        background-color: $grey-filled;
+    }
 }

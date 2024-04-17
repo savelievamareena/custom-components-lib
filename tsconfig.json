@@ -23,6 +23,6 @@
     "src/**/*",
     "webpack.config.ts",
     ".eslintrc.js",
-    "declarations.d.ts"
+    "./declarations.d.ts"
   ]
 }

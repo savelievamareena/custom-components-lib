@@ -8,6 +8,7 @@ import styles from "./Select.module.scss";
 const Select = ({ label, options, ...props }: SelectProps) => {
     const [isOptionsVisible, setIsOptionsVisible] = useState(false);
     const [selectedOption, setSelectedOption] = useState("");
+    const [selectedOptionIndex, setSelectedOptionIndex] = useState(0);
 
     const toggleRef = useRef<HTMLDivElement>(null);
     const optionsRef = useRef<HTMLDivElement>(null);
@@ -16,7 +17,7 @@ const Select = ({ label, options, ...props }: SelectProps) => {
     const [left, setLeft] = useState("0px");
     const [bottom, setBottom] = useState("0px");
 
-    const handleClick = (event: React.MouseEvent) => {
+    const handleSelectClick = (event: React.MouseEvent) => {
         event.stopPropagation();
         setIsOptionsVisible((prevState) => !prevState);
 
@@ -34,12 +35,9 @@ const Select = ({ label, options, ...props }: SelectProps) => {
         }
     };
 
-    const handleOptionClick = (event: React.MouseEvent) => {
-        event.stopPropagation();
-        if (event.currentTarget.textContent) {
-            setSelectedOption(event.currentTarget.textContent);
-            setIsOptionsVisible(false);
-        }
+    const handleOptionClick = (i: number) => {
+        setSelectedOptionIndex(i);
+        setIsOptionsVisible(false);
     };
 
     useEffect(() => {
@@ -47,6 +45,20 @@ const Select = ({ label, options, ...props }: SelectProps) => {
             if (isOptionsVisible) {
                 if (event.key === "Escape") {
                     setIsOptionsVisible(false);
+                } else {
+                    if (event.key === "ArrowDown") {
+                        setSelectedOptionIndex((prev) =>
+                            prev === options.length - 1 ? 0 : prev + 1,
+                        );
+                    } else if (event.key === "ArrowUp") {
+                        setSelectedOptionIndex((prev) =>
+                            prev === 0 ? options.length - 1 : prev - 1,
+                        );
+                    }
+
+                    if (event.key === "Enter") {
+                        setIsOptionsVisible(false);
+                    }
                 }
             } else {
                 if (event.key === "Enter") {
@@ -80,6 +92,10 @@ const Select = ({ label, options, ...props }: SelectProps) => {
     }, [isOptionsVisible]);
 
     useEffect(() => {
+        setSelectedOption(options[selectedOptionIndex].option);
+    }, [selectedOptionIndex]);
+
+    useEffect(() => {
         const handleOutsideClick = (event: MouseEvent) => {
             if (
                 isOptionsVisible &&
@@ -92,8 +108,6 @@ const Select = ({ label, options, ...props }: SelectProps) => {
 
         if (isOptionsVisible) {
             document.addEventListener("click", handleOutsideClick);
-        } else {
-            document.removeEventListener("click", handleOutsideClick);
         }
 
         return () => {
@@ -112,7 +126,7 @@ const Select = ({ label, options, ...props }: SelectProps) => {
 
     return (
         <div>
-            <div onClick={handleClick} ref={toggleRef} {...props}>
+            <div onClick={handleSelectClick} ref={toggleRef} {...props}>
                 <TextField
                     value={selectedOption}
                     error={false}
@@ -127,11 +141,14 @@ const Select = ({ label, options, ...props }: SelectProps) => {
                     {options.map((option, i) => {
                         return (
                             <div
-                                className={styles.option}
-                                data-value={option.id}
+                                className={classNames(styles.option, {
+                                    [styles.selected]: i === selectedOptionIndex,
+                                })}
                                 role={"option"}
                                 key={i}
-                                onClick={handleOptionClick}
+                                onClick={() => {
+                                    handleOptionClick(i);
+                                }}
                             >
                                 {option.option}
                             </div>
