@@ -1,26 +1,14 @@
-import React, { type FC } from "react";
-import { type ButtonProps } from "./Button.types";
-import "./Button.scss";
+import React from "react";
 import classNames from "classnames";
+import { type ButtonProps } from "./Button.types";
+import styles from "./Button.module.scss";
 
-const Button: FC<ButtonProps> = ({
-    children,
-    variant = "contained",
-    disabled = false,
-    size = "medium",
-    onClick,
-}) => {
-    const classes = classNames("my_button", size, variant);
+const Button = ({ variant = "contained", size = "medium", className, ...props }: ButtonProps) => {
+    const classes = classNames(styles.my_button, styles[size], styles[variant], className);
 
     return (
-        <button
-            className={classes}
-            disabled={disabled}
-            onClick={function () {
-                onClick();
-            }}
-        >
-            {children}
+        <button className={classes} {...props}>
+            {props.children}
         </button>
     );
 };

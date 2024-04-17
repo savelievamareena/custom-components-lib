@@ -1,15 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
-import { type TextFieldProps } from "./TextField.types";
 import classNames from "classnames";
-import "./TextField.scss";
+import { type TextFieldProps } from "./TextField.types";
+import styles from "./TextField.module.scss";
 
 const TextField = ({
     value = "",
-    disabled,
     error,
     variant = "standard",
     label,
-    readonly,
+    ...props
 }: TextFieldProps) => {
     const [inputValue, setInputValue] = useState(value);
     const inputRef = useRef<HTMLInputElement>(null);
@@ -22,34 +21,32 @@ const TextField = ({
         setInputValue(event.target.value);
     };
 
-    const handleOuterDivClick = () => {
-        inputRef.current?.focus();
-    };
-
-    const styles = classNames(
-        "text_field_wrapper",
-        error ? "error" : "",
-        variant,
-        disabled ? "disabled" : "",
+    const classes = classNames(
+        styles.text_field_wrapper,
+        error ? styles.error : "",
+        styles[variant],
+        props.disabled ? styles.disabled : "",
     );
 
     return (
-        <div className={styles} onClick={handleOuterDivClick}>
-            <label
-                className={inputValue || error ? "text_field_label focused" : "text_field_label"}
+        <label className={classes}>
+            <span
+                className={classNames(styles.text_field_label, {
+                    [styles.focused]: inputValue || error,
+                })}
             >
                 {label}
-            </label>
+            </span>
             <input
                 ref={inputRef}
                 value={inputValue}
-                className='text_field_input'
+                className={styles.text_field_input}
                 type='text'
-                disabled={disabled}
+                disabled={props.disabled}
                 onChange={handleInputChange}
-                readOnly={readonly}
+                {...props}
             />
-        </div>
+        </label>
     );
 };
 

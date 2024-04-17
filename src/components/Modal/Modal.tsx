@@ -1,12 +1,12 @@
-import React, { type FC, useEffect, useState } from "react";
-import { type ModalProps } from "./Modal.types";
-import "./Modal.scss";
-import classNames from "classnames";
+import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import classNames from "classnames";
+import { type ModalProps } from "./Modal.types";
+import styles from "./Modal.module.scss";
 
-const Modal: FC<ModalProps> = ({ open, children, onClose }) => {
+const Modal = ({ open, onClose, ...props }: ModalProps) => {
     const [isOpened, setIsOpened] = useState(open);
-    const styles = classNames("modal_wrapper", isOpened ? "opened" : "");
+    const classes = classNames(styles.modal_wrapper, isOpened ? styles.opened : "");
 
     function handleOutsideClick() {
         setIsOpened(false);
@@ -34,9 +34,9 @@ const Modal: FC<ModalProps> = ({ open, children, onClose }) => {
     return (
         <div>
             {createPortal(
-                <div className={styles} onClick={handleOutsideClick} role={"dialog"}>
-                    <div className='modal' onClick={stopPropagation}>
-                        {children}
+                <div className={classes} onClick={handleOutsideClick} role={"dialog"} {...props}>
+                    <div className={styles.modal} onClick={stopPropagation}>
+                        {props.children}
                     </div>
                 </div>,
                 document.body,

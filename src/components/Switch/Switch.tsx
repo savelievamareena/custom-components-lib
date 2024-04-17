@@ -1,27 +1,32 @@
-import React, { FC, useState } from "react";
-import "./Switch.scss";
-import { SwitchProps } from "./Switch.types";
+import React, { useState } from "react";
 import classNames from "classnames";
+import { SwitchProps } from "./Switch.types";
+import styles from "./Switch.module.scss";
 
-const Switch: FC<SwitchProps> = ({ checked, onChange, disabled }) => {
-    const [isChecked, setIsChecked] = useState(checked);
+const Switch = ({ ...props }: SwitchProps) => {
+    const [isChecked, setIsChecked] = useState(props.checked);
 
     const toggleSwitch = () => {
-        setIsChecked(!isChecked);
+        setIsChecked((prev) => !prev);
     };
 
-    const styles = classNames("switch", isChecked ? "on" : "", disabled ? "disabled" : "");
+    const classes = classNames(
+        styles.switch,
+        isChecked ? styles.on : "",
+        props.disabled ? styles.disabled : "",
+    );
 
     return (
         <>
             <input
                 type='checkbox'
                 checked={isChecked}
-                disabled={disabled}
-                className='toggle_input'
-                onChange={onChange}
+                disabled={props.disabled}
+                className={styles.toggle_input}
+                onChange={props.onChange}
+                {...props}
             />
-            <div className={styles} onClick={disabled ? undefined : toggleSwitch}>
+            <div className={classes} onClick={props.disabled ? undefined : toggleSwitch}>
                 <div className='toggle'></div>
             </div>
         </>

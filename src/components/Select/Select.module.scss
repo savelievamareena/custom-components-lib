@@ -1,10 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
-
-$disabled-text: #D3D3D3FF;
-
-html {
-    font-size: 16px;
-}
+@import '../../../styles/base.module';
 
 .options_wrapper {
     min-width: 200px;

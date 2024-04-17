@@ -1,0 +1,14 @@
+@import '../../../styles/base.module';
+
+.checkbox_wrapper {
+    padding: 8px;
+}
+
+.checkbox_wrapper label {
+    user-select: none;
+}
+
+.disabled {
+    color: $text-dark;
+}
+
