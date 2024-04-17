@@ -21,10 +21,6 @@ const TextField = ({
         setInputValue(event.target.value);
     };
 
-    const handleOuterDivClick = () => {
-        inputRef.current?.focus();
-    };
-
     const classes = classNames(
         styles.text_field_wrapper,
         error ? styles.error : "",
@@ -33,14 +29,14 @@ const TextField = ({
     );
 
     return (
-        <div className={classes} onClick={handleOuterDivClick}>
-            <label
+        <label className={classes}>
+            <span
                 className={classNames(styles.text_field_label, {
                     [styles.focused]: inputValue || error,
                 })}
             >
                 {label}
-            </label>
+            </span>
             <input
                 ref={inputRef}
                 value={inputValue}
@@ -50,7 +46,7 @@ const TextField = ({
                 onChange={handleInputChange}
                 {...props}
             />
-        </div>
+        </label>
     );
 };
 

@@ -1,7 +1,6 @@
 @import '../../../styles/base.module';
 
 .text_field_wrapper {
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     font-weight: 500;
     font-size: 1rem;
     line-height: 1.5em;
@@ -12,7 +11,7 @@
     margin: 8px;
 }
 
-.text_field_wrapper label {
+.text_field_wrapper span {
     position: absolute;
     top: 50%;
     left: 10px;
@@ -31,7 +30,7 @@
 }
 
 .text_field_wrapper.disabled .text_field_input,
-.text_field_wrapper.disabled label {
+.text_field_wrapper.disabled span {
     color: $disabled-text;
 }
 
@@ -62,15 +61,15 @@
     padding: 15px 13px;
 }
 
-.text_field_wrapper.outlined:focus-within>label,
-.text_field_wrapper.outlined > label.focused {
+.text_field_wrapper.outlined:focus-within>span,
+.text_field_wrapper.outlined > span.focused {
     top: -2px;
     font-size: 0.8em;
     background-color: white;
     padding: 0 4px;
 }
 
-.text_field_wrapper.outlined:focus-within>label {
+.text_field_wrapper.outlined:focus-within>span {
     color: $blue;
 }
 
@@ -95,7 +94,7 @@
     color: $text-dark;
 }
 
-.text_field_wrapper.filled.disabled label {
+.text_field_wrapper.filled.disabled span {
     color: $text-dark;
 }
 
@@ -120,14 +119,14 @@
     background-color: $grey-filled;
 }
 
-.text_field_wrapper.filled:focus-within>label,
-.text_field_wrapper.filled > label.focused {
+.text_field_wrapper.filled:focus-within>span,
+.text_field_wrapper.filled > span.focused {
     top: 15px;
     font-size: 0.8em;
     padding: 4px;
 }
 
-.text_field_wrapper.filled:focus-within>label {
+.text_field_wrapper.filled:focus-within>span {
     color: $blue;
 }
 
@@ -158,18 +157,18 @@
     padding-bottom: 5px;
 }
 
-.text_field_wrapper.standard>label {
+.text_field_wrapper.standard>span {
     left: 0;
 }
 
-.text_field_wrapper.standard:focus-within>label,
-.text_field_wrapper.standard > label.focused {
+.text_field_wrapper.standard:focus-within>span,
+.text_field_wrapper.standard > span.focused {
     top: 6px;
     font-size: 0.8em;
     padding: 4px;
 }
 
-.text_field_wrapper.standard:focus-within>label {
+.text_field_wrapper.standard:focus-within>span {
     color: $blue;
 }
 
@@ -179,7 +178,7 @@
     border-color: $error-red;
 }
 
-.text_field_wrapper.error>label,
-.text_field_wrapper.error:focus-within>label {
+.text_field_wrapper.error>span,
+.text_field_wrapper.error:focus-within>span {
     color: $error-red;
 }
