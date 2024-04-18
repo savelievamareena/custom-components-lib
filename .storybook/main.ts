@@ -1,4 +1,5 @@
 import type { StorybookConfig } from "@storybook/react-webpack5";
+import { Configuration } from "webpack";
 import * as path from "path";
 
 const config: StorybookConfig = {
@@ -18,12 +19,24 @@ const config: StorybookConfig = {
     docs: {
         autodocs: "tag",
     },
-    webpackFinal: async (config) => {
-        // Add SCSS support
+    webpackFinal: async (config: Configuration) => {
+        config.module = config.module || {};
+        config.module.rules = config.module.rules || [];
+
         config.module.rules.push({
             test: /\.scss$/,
             use: ["style-loader", "css-loader", "sass-loader"],
             include: path.resolve(__dirname, "../"),
+        });
+
+        const imageRule = config.module.rules.find((rule) => rule?.["test"]?.test(".svg"));
+        if (imageRule) {
+            imageRule["exclude"] = /\.svg$/;
+        }
+
+        config.module.rules.push({
+            test: /\.svg$/,
+            use: ["@svgr/webpack"],
         });
 
         return config;
