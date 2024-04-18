@@ -8,7 +8,7 @@ import styles from "./Select.module.scss";
 const Select = ({ label, options, ...props }: SelectProps) => {
     const [isOptionsVisible, setIsOptionsVisible] = useState(false);
     const [selectedOption, setSelectedOption] = useState("");
-    const [selectedOptionIndex, setSelectedOptionIndex] = useState(0);
+    const [selectedOptionIndex, setSelectedOptionIndex] = useState<number | null>(null);
 
     const toggleRef = useRef<HTMLDivElement>(null);
     const optionsRef = useRef<HTMLDivElement>(null);
@@ -48,11 +48,15 @@ const Select = ({ label, options, ...props }: SelectProps) => {
                 } else {
                     if (event.key === "ArrowDown") {
                         setSelectedOptionIndex((prev) =>
-                            prev === options.length - 1 ? 0 : prev + 1,
+                            prev === null ? 0 : prev === options.length - 1 ? 0 : prev + 1,
                         );
                     } else if (event.key === "ArrowUp") {
                         setSelectedOptionIndex((prev) =>
-                            prev === 0 ? options.length - 1 : prev - 1,
+                            prev === null
+                                ? options.length - 1
+                                : prev === 0
+                                  ? options.length - 1
+                                  : prev - 1,
                         );
                     }
 
@@ -92,7 +96,9 @@ const Select = ({ label, options, ...props }: SelectProps) => {
     }, [isOptionsVisible]);
 
     useEffect(() => {
-        setSelectedOption(options[selectedOptionIndex].option);
+        if (selectedOptionIndex !== null) {
+            setSelectedOption(options[selectedOptionIndex].option);
+        }
     }, [selectedOptionIndex]);
 
     useEffect(() => {
@@ -142,7 +148,8 @@ const Select = ({ label, options, ...props }: SelectProps) => {
                         return (
                             <div
                                 className={classNames(styles.option, {
-                                    [styles.selected]: i === selectedOptionIndex,
+                                    [styles.selected]:
+                                        selectedOptionIndex !== null && i === selectedOptionIndex,
                                 })}
                                 role={"option"}
                                 key={i}
