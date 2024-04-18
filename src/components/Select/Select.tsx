@@ -18,22 +18,25 @@ const Select = ({ label, options, ...props }: SelectProps) => {
     const [left, setLeft] = useState("0px");
     const [bottom, setBottom] = useState("0px");
 
-    const handleSelectClick = (event: React.MouseEvent) => {
-        event.stopPropagation();
-        setIsOptionsVisible((prevState) => !prevState);
-
+    const updatePosition = () => {
         if (toggleRef.current && optionsRef.current) {
             const selectElement = toggleRef.current.getBoundingClientRect();
             setLeft(selectElement.left + "px");
 
             if (selectElement.bottom > 200) {
-                const topCalculated = selectElement.top + selectElement.height;
-                setTop(topCalculated + "px");
+                setTop(`${selectElement.top + selectElement.height}px`);
+                setBottom("0px"); // Reset bottom if using top
             } else {
-                const bottomCalculated = selectElement.top + selectElement.height;
-                setBottom(bottomCalculated + "px");
+                setBottom(`${selectElement.top + selectElement.height}px`);
+                setTop("0px"); // Reset top if using bottom
             }
         }
+    };
+
+    const handleSelectClick = (event: React.MouseEvent) => {
+        event.stopPropagation();
+        setIsOptionsVisible((prevState) => !prevState);
+        updatePosition();
     };
 
     const handleOptionClick = (i: number) => {
@@ -43,45 +46,34 @@ const Select = ({ label, options, ...props }: SelectProps) => {
 
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
-            if (isOptionsVisible) {
-                if (event.key === "Escape") {
-                    setIsOptionsVisible(false);
-                } else {
-                    if (event.key === "ArrowDown") {
-                        setSelectedOptionIndex((prev) =>
-                            prev === null ? 0 : prev === options.length - 1 ? 0 : prev + 1,
-                        );
-                    } else if (event.key === "ArrowUp") {
-                        setSelectedOptionIndex((prev) =>
-                            prev === null
-                                ? options.length - 1
-                                : prev === 0
-                                  ? options.length - 1
-                                  : prev - 1,
-                        );
-                    }
-
-                    if (event.key === "Enter") {
-                        setIsOptionsVisible(false);
-                    }
-                }
-            } else {
+            if (!isOptionsVisible) {
                 if (event.key === "Enter") {
                     setIsOptionsVisible(true);
-
-                    if (toggleRef.current && optionsRef.current) {
-                        const selectElement = toggleRef.current.getBoundingClientRect();
-                        setLeft(selectElement.left + "px");
-
-                        if (selectElement.bottom > 200) {
-                            const topCalculated = selectElement.top + selectElement.height;
-                            setTop(topCalculated + "px");
-                        } else {
-                            const bottomCalculated = selectElement.top + selectElement.height;
-                            setBottom(bottomCalculated + "px");
-                        }
-                    }
+                    updatePosition();
+                    return;
                 }
+            }
+
+            if (event.key === "Escape") {
+                setIsOptionsVisible(false);
+            }
+
+            if (event.key === "ArrowDown") {
+                setSelectedOptionIndex((prev) => {
+                    if (prev === null) return 0;
+                    else return prev === options.length - 1 ? 0 : prev + 1;
+                });
+            }
+
+            if (event.key === "ArrowUp") {
+                setSelectedOptionIndex((prev) => {
+                    if (prev === null) return options.length - 1;
+                    else return prev === 0 ? options.length - 1 : prev - 1;
+                });
+            }
+
+            if (event.key === "Enter") {
+                setIsOptionsVisible(false);
             }
         };
 
