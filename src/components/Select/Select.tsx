@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState, CSSProperties } from "react";
 import { createPortal } from "react-dom";
 import classNames from "classnames";
 import { TextField } from "../TextField";
+import ArrowDown from "../../../assets/ArrowDown.svg";
 import { type SelectProps } from "./Select.types";
 import styles from "./Select.module.scss";
 
@@ -134,7 +135,8 @@ const Select = ({ label, options, ...props }: SelectProps) => {
         <div>
             <div onClick={handleSelectClick} ref={toggleRef} {...props}>
                 <TextField
-                    value={selectedOption}
+                    text={selectedOption}
+                    icon={<ArrowDown />}
                     error={false}
                     label={label}
                     variant={"outlined"}

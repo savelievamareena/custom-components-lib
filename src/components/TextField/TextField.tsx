@@ -3,19 +3,17 @@ import classNames from "classnames";
 import { type TextFieldProps } from "./TextField.types";
 import styles from "./TextField.module.scss";
 
-const TextField = ({
-    value = "",
-    error,
-    variant = "standard",
-    label,
-    ...props
-}: TextFieldProps) => {
-    const [inputValue, setInputValue] = useState(value);
+const TextField = ({ text = "", error, variant = "standard", label, ...props }: TextFieldProps) => {
+    const [inputValue, setInputValue] = useState(text);
     const inputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-        setInputValue(value);
-    }, [value]);
+        setInputValue(text);
+    }, [text]);
+
+    const handleSvgClick = (event: React.MouseEvent) => {
+        event.stopPropagation();
+    };
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(event.target.value);
@@ -46,6 +44,11 @@ const TextField = ({
                 onChange={handleInputChange}
                 {...props}
             />
+            {props.icon && (
+                <div className={styles.iconContainer} onClick={handleSvgClick}>
+                    {props.icon}
+                </div>
+            )}
         </label>
     );
 };
