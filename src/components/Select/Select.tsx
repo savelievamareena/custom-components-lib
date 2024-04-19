@@ -21,19 +21,24 @@ const Select = ({ label, options, ...props }: SelectProps) => {
     const updatePosition = () => {
         if (toggleRef.current && optionsRef.current) {
             const selectElement = toggleRef.current.getBoundingClientRect();
-            setLeft(selectElement.left + "px");
+            setLeft(`${selectElement.left}px`);
+            const windowHeight = window.innerHeight;
 
-            if (selectElement.bottom > 200) {
-                setTop(`${selectElement.top + selectElement.height}px`);
-                setBottom("0px"); // Reset bottom if using top
-            } else {
-                setBottom(`${selectElement.top + selectElement.height}px`);
-                setTop("0px"); // Reset top if using bottom
+            const spaceBelow = windowHeight - selectElement.bottom;
+            const spaceAbove = selectElement.top;
+
+            if (spaceBelow >= 200) {
+                setTop(`${selectElement.bottom}px`);
+            } else if (spaceAbove >= 200) {
+                setBottom(`${windowHeight - selectElement.top}px`);
             }
         }
     };
 
     const handleSelectClick = (event: React.MouseEvent) => {
+        if (!selectedOption) {
+            setSelectedOption(" ");
+        }
         event.stopPropagation();
         setIsOptionsVisible((prevState) => !prevState);
         updatePosition();
