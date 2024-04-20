@@ -1,9 +1,9 @@
 import { ComponentProps, ReactNode } from "react";
 
 export interface TextFieldProps extends ComponentProps<"input"> {
-    text: string;
+    text?: string;
     icon?: ReactNode;
-    error: boolean;
+    error?: boolean;
     label: string;
-    variant: "outlined" | "filled" | "standard";
+    variant?: "outlined" | "filled" | "standard";
 }
