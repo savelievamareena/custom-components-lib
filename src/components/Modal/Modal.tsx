@@ -6,7 +6,7 @@ import styles from "./Modal.module.scss";
 
 const Modal = ({ open, onClose, ...props }: ModalProps) => {
     const [isOpened, setIsOpened] = useState(open);
-    const classes = classNames(styles.modal_wrapper, isOpened ? styles.opened : "");
+    const classes = classNames(styles.modal_wrapper, isOpened ? styles.opened : styles.closed);
 
     function handleOutsideClick() {
         setIsOpened(false);

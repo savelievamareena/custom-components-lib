@@ -10,8 +10,6 @@
     position: fixed;
     top: 0;
     left: 0;
-    opacity: 0;
-    pointer-events: none;
     transition: opacity 0.3s ease;
     z-index: 9999;
 }
@@ -28,5 +26,10 @@
 .modal_wrapper.opened {
     opacity: 1;
     pointer-events: auto;
+}
+
+.modal_wrapper.closed {
+    opacity: 0;
+    pointer-events: none;
 }
 
