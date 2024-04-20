@@ -3,3 +3,4 @@ public
 build
 dist
 *.svg
+__mocks__
