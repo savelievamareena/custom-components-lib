@@ -27,7 +27,7 @@ const Switch = ({ ...props }: SwitchProps) => {
                 {...props}
             />
             <div className={classes} onClick={props.disabled ? undefined : toggleSwitch}>
-                <div className='toggle'></div>
+                <div className={styles.toggle}></div>
             </div>
         </>
     );

@@ -29,6 +29,7 @@ const TextField = ({ text = "", error, variant = "standard", label, ...props }: 
     return (
         <label className={classes}>
             <span
+                role={"label"}
                 className={classNames(styles.text_field_label, {
                     [styles.focused]: inputValue || error,
                 })}
@@ -36,6 +37,7 @@ const TextField = ({ text = "", error, variant = "standard", label, ...props }: 
                 {label}
             </span>
             <input
+                role={"input"}
                 ref={inputRef}
                 value={inputValue}
                 className={styles.text_field_input}
@@ -45,7 +47,7 @@ const TextField = ({ text = "", error, variant = "standard", label, ...props }: 
                 {...props}
             />
             {props.icon && (
-                <div className={styles.iconContainer} onClick={handleSvgClick}>
+                <div className={styles.iconContainer} role={"button"} onClick={handleSvgClick}>
                     {props.icon}
                 </div>
             )}

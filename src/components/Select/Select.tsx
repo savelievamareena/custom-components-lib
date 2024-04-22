@@ -8,6 +8,7 @@ import styles from "./Select.module.scss";
 
 const Select = ({ label, options, ...props }: SelectProps) => {
     const [isOptionsVisible, setIsOptionsVisible] = useState(false);
+    const [selectElementRect, setSelectElementRect] = useState<null | DOMRect>(null);
     const [selectedOption, setSelectedOption] = useState("");
     const [selectedOptionIndex, setSelectedOptionIndex] = useState<number | null>(null);
 
@@ -18,22 +19,32 @@ const Select = ({ label, options, ...props }: SelectProps) => {
     const [left, setLeft] = useState("0px");
     const [bottom, setBottom] = useState("0px");
 
-    const updatePosition = () => {
-        if (toggleRef.current && optionsRef.current) {
-            const selectElement = toggleRef.current.getBoundingClientRect();
-            setLeft(`${selectElement.left}px`);
+    useEffect(() => {
+        if (toggleRef.current) {
+            setSelectElementRect(toggleRef.current.getBoundingClientRect());
+        }
+    }, [toggleRef.current, isOptionsVisible]);
+
+    useEffect(() => {
+        if (selectElementRect) {
+            setLeft(`${selectElementRect.left}px`);
+        }
+    }, [selectElementRect]);
+
+    useEffect(() => {
+        if (selectElementRect) {
             const windowHeight = window.innerHeight;
 
-            const spaceBelow = windowHeight - selectElement.bottom;
-            const spaceAbove = selectElement.top;
+            const spaceBelow = windowHeight - selectElementRect.bottom;
+            const spaceAbove = selectElementRect.top;
 
             if (spaceBelow >= 200) {
-                setTop(`${selectElement.bottom}px`);
+                setTop(`${selectElementRect.bottom}px`);
             } else if (spaceAbove >= 200) {
-                setBottom(`${windowHeight - selectElement.top}px`);
+                setBottom(`${windowHeight - selectElementRect.top}px`);
             }
         }
-    };
+    }, [left]);
 
     const handleSelectClick = (event: React.MouseEvent) => {
         if (!selectedOption) {
@@ -41,7 +52,6 @@ const Select = ({ label, options, ...props }: SelectProps) => {
         }
         event.stopPropagation();
         setIsOptionsVisible((prevState) => !prevState);
-        updatePosition();
     };
 
     const handleOptionClick = (i: number) => {
@@ -54,7 +64,6 @@ const Select = ({ label, options, ...props }: SelectProps) => {
             if (!isOptionsVisible) {
                 if (event.key === "Enter") {
                     setIsOptionsVisible(true);
-                    updatePosition();
                     return;
                 }
             }
@@ -126,11 +135,11 @@ const Select = ({ label, options, ...props }: SelectProps) => {
         positionCalculated.top = top;
     }
 
-    const classes = classNames(styles.options_wrapper, isOptionsVisible ? styles.visible : "");
+    const classes = classNames(styles.options_wrapper, styles.visible);
 
     return (
         <div>
-            <div onClick={handleSelectClick} ref={toggleRef} {...props}>
+            <div role={"select"} onClick={handleSelectClick} ref={toggleRef} {...props}>
                 <TextField
                     text={selectedOption}
                     icon={<ArrowDown />}
@@ -142,9 +151,14 @@ const Select = ({ label, options, ...props }: SelectProps) => {
             </div>
 
             {createPortal(
-                <div className={classes} role={"menu"} ref={optionsRef} style={positionCalculated}>
-                    {options.map((option, i) => {
-                        return (
+                isOptionsVisible ? (
+                    <div
+                        className={classes}
+                        role={"menu"}
+                        ref={optionsRef}
+                        style={positionCalculated}
+                    >
+                        {options.map((option, i) => (
                             <div
                                 className={classNames(styles.option, {
                                     [styles.selected]:
@@ -152,15 +166,13 @@ const Select = ({ label, options, ...props }: SelectProps) => {
                                 })}
                                 role={"option"}
                                 key={i}
-                                onClick={() => {
-                                    handleOptionClick(i);
-                                }}
+                                onClick={() => handleOptionClick(i)}
                             >
                                 {option.option}
                             </div>
-                        );
-                    })}
-                </div>,
+                        ))}
+                    </div>
+                ) : null,
                 document.body,
             )}
         </div>
