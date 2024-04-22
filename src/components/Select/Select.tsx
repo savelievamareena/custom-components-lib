@@ -151,33 +151,28 @@ const Select = ({ label, options, ...props }: SelectProps) => {
             </div>
 
             {createPortal(
-                isOptionsVisible && left !== "0px" && (
+                isOptionsVisible ? (
                     <div
                         className={classes}
                         role={"menu"}
                         ref={optionsRef}
                         style={positionCalculated}
                     >
-                        {options.map((option, i) => {
-                            return (
-                                <div
-                                    className={classNames(styles.option, {
-                                        [styles.selected]:
-                                            selectedOptionIndex !== null &&
-                                            i === selectedOptionIndex,
-                                    })}
-                                    role={"option"}
-                                    key={i}
-                                    onClick={() => {
-                                        handleOptionClick(i);
-                                    }}
-                                >
-                                    {option.option}
-                                </div>
-                            );
-                        })}
+                        {options.map((option, i) => (
+                            <div
+                                className={classNames(styles.option, {
+                                    [styles.selected]:
+                                        selectedOptionIndex !== null && i === selectedOptionIndex,
+                                })}
+                                role={"option"}
+                                key={i}
+                                onClick={() => handleOptionClick(i)}
+                            >
+                                {option.option}
+                            </div>
+                        ))}
                     </div>
-                ),
+                ) : null,
                 document.body,
             )}
         </div>

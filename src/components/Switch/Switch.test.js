@@ -18,11 +18,11 @@ describe("Switch Component", () => {
     });
 
     it("toggles the checked state when clicked", () => {
-        const { getByRole } = render(<Switch />);
-        const checkbox = getByRole("checkbox");
-        fireEvent.click(checkbox); // Toggle on
+        render(<Switch />);
+        const checkbox = screen.getByRole("checkbox");
+        fireEvent.click(checkbox);
         expect(checkbox).toBeChecked();
-        fireEvent.click(checkbox); // Toggle off
+        fireEvent.click(checkbox);
         expect(checkbox).not.toBeChecked();
     });
 
@@ -31,7 +31,7 @@ describe("Switch Component", () => {
         const checkbox = screen.getByRole("checkbox");
         expect(checkbox).toBeDisabled();
         userEvent.click(checkbox);
-        expect(checkbox).not.toBeChecked(); // should remain unchanged
+        expect(checkbox).not.toBeChecked();
     });
 
     it("calls onChange when toggled", () => {
@@ -44,7 +44,7 @@ describe("Switch Component", () => {
 
     it("applies disabled style when disabled", () => {
         render(<Switch disabled />);
-        const switchDiv = screen.getByRole("checkbox").nextSibling; // Assuming the div follows the input in the DOM
+        const switchDiv = screen.getByRole("checkbox").nextSibling;
         expect(switchDiv).toHaveClass("disabled");
     });
 });

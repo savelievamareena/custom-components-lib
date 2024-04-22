@@ -40,13 +40,4 @@ describe("TextField Component", () => {
         render(<TextField icon={<Icon />} label='With Icon' />);
         expect(screen.getByText("Icon")).toBeInTheDocument();
     });
-
-    // it("stops propagation when icon is clicked", () => {
-    //     const handleClick = jest.fn();
-    //     const Icon = () => <span onClick={handleClick}>Icon</span>;
-    //     render(<TextField icon={<Icon />} label='With Icon' />);
-    //     const icon = screen.getByText("Icon");
-    //     fireEvent.click(icon);
-    //     expect(handleClick).not.toHaveBeenCalled();
-    // });
 });
