@@ -40,7 +40,7 @@ describe("Modal Component", () => {
                 Modal Content
             </Modal>,
         );
-        fireEvent.click(screen.getByRole("dialog")); // Click on the modal wrapper
+        fireEvent.click(screen.getByRole("dialog"));
         expect(onClose).toHaveBeenCalledTimes(1);
     });
 
@@ -51,7 +51,7 @@ describe("Modal Component", () => {
                 <div>Modal Content</div>
             </Modal>,
         );
-        fireEvent.click(screen.getByText("Modal Content")); // Click on the modal content
+        fireEvent.click(screen.getByText("Modal Content"));
         expect(onClose).not.toHaveBeenCalled();
     });
 });

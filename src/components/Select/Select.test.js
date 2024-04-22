@@ -43,7 +43,7 @@ describe("Select Component", () => {
         toggle.focus();
         fireEvent.keyDown(toggle, { key: "ArrowDown" });
         fireEvent.keyDown(toggle, { key: "Enter" });
-        expect(toggle).toHaveValue("Option 1"); // First option should be selected
+        expect(toggle).toHaveValue("Option 1");
     });
 
     it("closes options when clicking outside", () => {
