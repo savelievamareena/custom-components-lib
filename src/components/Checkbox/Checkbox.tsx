@@ -6,7 +6,7 @@ const Checkbox = ({ label, checked = false, ...props }: CheckboxProps) => {
     const [isChecked, setIsChecked] = useState(checked);
 
     function handleClick() {
-        setIsChecked(!isChecked);
+        setIsChecked((prev) => !prev);
     }
 
     return (
@@ -16,11 +16,12 @@ const Checkbox = ({ label, checked = false, ...props }: CheckboxProps) => {
             id={"my_checkbox"}
         >
             <input
+                value={props.value}
                 type='checkbox'
                 checked={isChecked}
                 id={"my_checkbox_input"}
+                onChange={props.onChange}
                 {...props}
-                onChange={() => {}}
             />
             <label className={props.disabled ? styles.disabled : ""} htmlFor={"my_checkbox_input"}>
                 {label}

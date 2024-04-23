@@ -7,7 +7,7 @@ describe("Button Component", () => {
     it("renders with default props", () => {
         render(<Button>Default</Button>);
         const button = screen.getByRole("button", { name: "Default" });
-        expect(button).toHaveClass("my_button");
+        expect(button).toHaveClass("button");
         expect(button).toHaveClass("contained");
         expect(button).toHaveClass("medium");
     });

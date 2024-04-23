@@ -10,7 +10,7 @@ const Select = ({ label, options, ...props }: SelectProps) => {
     const [isOptionsVisible, setIsOptionsVisible] = useState(false);
     const [selectElementRect, setSelectElementRect] = useState<null | DOMRect>(null);
     const [selectedOption, setSelectedOption] = useState("");
-    const [selectedOptionIndex, setSelectedOptionIndex] = useState<number | null>(null);
+    const [selectedOptionIndex, setSelectedOptionIndex] = useState<null | number>(null);
 
     const toggleRef = useRef<HTMLDivElement>(null);
     const optionsRef = useRef<HTMLDivElement>(null);
@@ -111,9 +111,8 @@ const Select = ({ label, options, ...props }: SelectProps) => {
     useEffect(() => {
         const handleOutsideClick = (event: MouseEvent) => {
             if (
-                isOptionsVisible &&
                 optionsRef.current &&
-                !optionsRef.current.contains(event.target as Node)
+                !(event.target instanceof Node && optionsRef.current.contains(event.target))
             ) {
                 setIsOptionsVisible(false);
             }
@@ -147,6 +146,7 @@ const Select = ({ label, options, ...props }: SelectProps) => {
                     label={label}
                     variant={"outlined"}
                     readOnly={true}
+                    onChange={props.onChange}
                 />
             </div>
 
